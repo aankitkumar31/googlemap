@@ -1,0 +1,20 @@
+.container-box{
+    width: 80%;
+    margin: 0 auto;
+}
+.mb-5{
+    margin-bottom: 5%;
+}
+.mt-5{
+    margin-top: 5%;
+}
+.btn-group,.multiselect,.multiselect-container{
+    width: 100%;
+}
+.center{
+    text-align: center;
+}
+.multiselect-container{
+    max-height: 400px;
+    overflow-y: scroll;
+}

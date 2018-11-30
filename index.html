@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Page Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel='stylesheet' type='text/css' href='css/bootstrap-multiselect.css'>
+    <link rel="stylesheet" type="text/css" media="screen" href="css/style.css" />
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCR_IWHQZb1tARqY1BS6tL6xA2ZoBDsL1o"></script>
+    <script src="js/jquery.min.js"> crossorigin='anonymous'</script>
+    <script src="js/bootstrap.bundle.min.js" crossorigin='anonymous'></script>
+    <script src="js/bootstrap-multiselect.js"></script>
+    <script src="js/main.js"></script>
+</head>
+<body>
+    <div class="container-box">
+        <div class="col-md-12">
+            <div class="row mb-5 mt-5">
+                <div class="col-md-4">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <label class="contro-label">Timeframe</label>
+                        </div>
+                        <div class="col-md-7">
+                            <select class="form-control" id="selTimeframe">
+                                <option value="24:00:00">Last 24 hours</option>
+                                <option value="48:00:00">Last 48 hours</option>
+                                <option value="72:00:00">Last 72 hours</option>                        
+                            </select>
+                        </div>
+                    </div>
+                </div>        
+                <div class="col-md-5">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <label class="contro-label">Customer ID's</label>
+                        </div>
+                        <div class="col-md-7">
+                            <select class="form-control selMultiSelect" multiple="multiple" id="selMultiSelect"> 
+                                <option value="cheese">Cheese</option>
+                                <option value="tomatoes">Tomatoes</option>
+                                <option value="mozarella">Mozzarella</option>
+                                <option value="mushrooms">Mushrooms</option>
+                                <option value="pepperoni">Pepperoni</option>
+                                <option value="onions">Onions</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <button class="btn btn-primary" id="btnSearch">Search</button>
+                </div>
+            </div>      
+        </div>
+        <div class="col-md-12">
+            <div id="map_div" style="height: 600px;"></div>
+        </div>
+    </div>    
+</body>
+</html>
