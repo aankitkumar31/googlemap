@@ -7,11 +7,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel='stylesheet' type='text/css' href='css/bootstrap-multiselect.css'>
+    <link rel="stylesheet" type="text/css" href="css/daterangepicker.css" />
     <link rel="stylesheet" type="text/css" media="screen" href="css/style.css" />
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCR_IWHQZb1tARqY1BS6tL6xA2ZoBDsL1o"></script>
     <script src="js/jquery.min.js"> crossorigin='anonymous'</script>
     <script src="js/bootstrap.bundle.min.js" crossorigin='anonymous'></script>
     <script src="js/bootstrap-multiselect.js"></script>
+    <script type="text/javascript" src="js/moment.min.js"></script>
+    <script type="text/javascript" src="js/daterangepicker.js"></script>
+    
     <script src="js/main.js"></script>
 </head>
 <body>
@@ -23,22 +27,21 @@
                         <div class="col-md-4">
                             <label class="contro-label">Timeframe</label>
                         </div>
-                        <div class="col-md-7">
-                            <select class="form-control" id="selTimeframe">
-                                <option value="24:00:00">Last 24 hours</option>
-                                <option value="48:00:00">Last 48 hours</option>
-                                <option value="72:00:00">Last 72 hours</option>                        
-                            </select>
+                        <div class="col-md-8">
+                            <div id="reportrange" style="background: #fff; cursor: pointer; padding: 5px 10px; border: 1px solid #ccc; width: 100%">
+                                <i class="fa fa-calendar"></i>&nbsp;
+                                <span></span> <i class="fa fa-caret-down"></i>
+                            </div>
                         </div>
                     </div>
                 </div>        
-                <div class="col-md-5">
+                <div class="col-md-4">
                     <div class="row">
                         <div class="col-md-4">
                             <label class="contro-label">Customer ID's</label>
                         </div>
                         <div class="col-md-7">
-                            <select class="form-control selMultiSelect" multiple="multiple" id="selMultiSelect"> 
+                            <select class="form-control selCustomerId" multiple="multiple" id="selCustomerId"> 
                                 <option value="cheese">Cheese</option>
                                 <option value="tomatoes">Tomatoes</option>
                                 <option value="mozarella">Mozzarella</option>
@@ -46,10 +49,29 @@
                                 <option value="pepperoni">Pepperoni</option>
                                 <option value="onions">Onions</option>
                             </select>
+                            <span class="error" id="selCustomerIdError"></span>
                         </div>
                     </div>
                 </div>
-                <div class="col-md-3">
+                <div class="col-md-4">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <label class="contro-label">Services</label>
+                        </div>
+                        <div class="col-md-7">
+                            <select class="form-control selServices" multiple="multiple" id="selServices"> 
+                                <option value="cheese">Cheese</option>
+                                <option value="tomatoes">Tomatoes</option>
+                                <option value="mozarella">Mozzarella</option>
+                                <option value="mushrooms">Mushrooms</option>
+                                <option value="pepperoni">Pepperoni</option>
+                                <option value="onions">Onions</option>
+                            </select>
+                            <span class="error" id="selServicesError"></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-12 center mt-2">
                     <button class="btn btn-primary" id="btnSearch">Search</button>
                 </div>
             </div>      
