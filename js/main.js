@@ -30,7 +30,6 @@ function bindcustomerid(timeframe){
         data: postData,
         cache: false,
         success: function(data){
-            debugger;
             var parseData = JSON.parse(data);
             let html = '';
             $.each(parseData,function(i,v){
@@ -40,17 +39,7 @@ function bindcustomerid(timeframe){
             $('#selMultiSelect').multiselect('destroy');
             $('#selMultiSelect').multiselect({
                 enableClickableOptGroups: true,     
-                includeSelectAllOption: true,           
-                // onChange: function (option, checked) {
-                //     shipDataArr = [];
-                //     var selected = this.$select.val();
-                //     shipDataArr = selected;
-                //     var tab = $('.navComparison li.active').attr('tab-name');
-                //     if (tab == "voyage") {
-                //         var shipName = shipDataArr.toString();
-                //         GetVoyageShipRoute(shipName, fromVoyageDate, toVoyageDate)
-                //     }
-                // }
+                includeSelectAllOption: true,  
             });
         }
     });    
@@ -68,7 +57,6 @@ function getMapData(timeframe,customerArr){
         data: postData,
         cache: false,
         success: function(data){
-            debugger;
             var parseData = JSON.parse(data);
             let mapData = [];
             $.each(parseData,function(i,v){
