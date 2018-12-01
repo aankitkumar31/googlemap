@@ -24,8 +24,8 @@ $(document).ready(function(){
             },3000)
         }
 
-        fromDate = moment(fromDate).format('YYYY-MM-DD HH:MM:SS');
-        endDate = moment(endDate).format('YYYY-MM-DD HH:MM:SS');
+        fromDate = moment(fromDate).format('YYYY-MM-DD');
+        endDate = moment(endDate).format('YYYY-MM-DD');
         let postData = {
             fromDate : fromDate,
             endDate : endDate,
