@@ -153,7 +153,7 @@ function bindCustomerId(parseData){
 function bindServices(parseData){
     let html = '';
     $.each(parseData,function(i,v){
-        html += '<option value="'+v.service_id+'">'+v.service_name+'</option>';
+        html += '<option value="'+v.service_id+'">'+v.service_name+' ('+v.service_id+')</option>';
     })
     $('#selServices').html(html);
     $('#selServices').multiselect('destroy');
