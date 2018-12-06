@@ -1,13 +1,13 @@
 <?php
 	// Mysql connection
 	
-	$mysql_server = "139.59.86.83"; 
-	$mysql_user = "root"; 
-	$mysql_pass = "tinsink";
-
-	// $mysql_server = "localhost"; 
+	// $mysql_server = "139.59.86.83"; 
 	// $mysql_user = "root"; 
-	// $mysql_pass = "root";
+	// $mysql_pass = "tinsink";
+
+	$mysql_server = "localhost"; 
+	$mysql_user = "root"; 
+	$mysql_pass = "root";
 
 	$mysql_db = "otrs"; 
 	

@@ -197,6 +197,14 @@ function bindCustomerId(parseData){
         onChange: function (option, checked) {
             getServices();
             $('#selCustomerIdError').text('');
+        },
+        onSelectAll: function() {
+            getServices();
+            $('#selCustomerIdError').text('');
+        },
+        onDeselectAll: function() {
+            getServices();
+            $('#selCustomerIdError').text('');
         }
     });
 }
@@ -212,6 +220,12 @@ function bindServices(parseData){
         enableClickableOptGroups: true,     
         includeSelectAllOption: true,  
         onChange: function (option, checked) {
+            $('#selServicesError').text('');
+        },
+        onSelectAll: function() {
+            $('#selServicesError').text('');
+        },
+        onDeselectAll: function() {
             $('#selServicesError').text('');
         }
     });
