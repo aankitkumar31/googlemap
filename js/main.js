@@ -6,8 +6,9 @@ let endDate;
 $(document).ready(function(){
     var timeframe = $('#selTimeframe').val();
     //getData(timeframe);
-    getFilterData()
-    
+    //getFilterData()    
+    $('#selCustomerId').multiselect();
+    $('#selServices').multiselect();
     
     $('#btnSearch').on('click',function(){
         var customerArr = $('#selCustomerId').val();
@@ -66,6 +67,7 @@ $(document).ready(function(){
         fromDate = picker.startDate['_d'];
         endDate = picker.endDate['_d'];
         $(this).val(picker.startDate.format('MMMM D, YYYY') + ' - ' + picker.endDate.format('MMMM D, YYYY'));
+        getCustomers();
     });
 
     $('#reportrange').on('cancel.daterangepicker', function(ev, picker) {
@@ -73,8 +75,55 @@ $(document).ready(function(){
         endDate = picker.endDate['_d'];
         $(this).val(picker.startDate.format('MMMM D, YYYY') + ' - ' + picker.endDate.format('MMMM D, YYYY'));
     });
+
+    // $('#selCustomerId').on('change',function(){
+    //     debugger;
+    // })
     
 })
+
+function getCustomers(){
+    let postData = {
+        fromDate : moment(fromDate).format('YYYY-MM-DD'),
+        endDate : moment(endDate).format('YYYY-MM-DD'),
+        operation : 'getTimeFrameCustomers'
+    }
+    $.ajax({
+        type: "POST",
+        url: "server/main.php",
+        data: postData,
+        cache: false,
+        success: function(data){
+            var parseData = JSON.parse(data);
+            let filteredCustomer = removeDuplicateCustomer(parseData);
+            $('#selCustomerId').multiselect('destroy');
+            $('#selCustomerId').multiselect();
+            bindCustomerId(filteredCustomer);
+        }
+    });    
+}
+
+function getServices(){
+    let postData = {
+        fromDate : moment(fromDate).format('YYYY-MM-DD'),
+        endDate : moment(endDate).format('YYYY-MM-DD'),
+        customerArr : $('#selCustomerId').val(),
+        operation : 'getTimeFrameCustomerServices'
+    }
+    $.ajax({
+        type: "POST",
+        url: "server/main.php",
+        data: postData,
+        cache: false,
+        success: function(data){
+            var parseData = JSON.parse(data);
+            let filteredServices = removeDuplicateServices(parseData);
+            $('#selServices').multiselect('destroy');
+            $('#selServices').multiselect();
+            bindServices(filteredServices);
+        }
+    });    
+}
 
 function getFilterData(){
     let postData = {
@@ -146,6 +195,7 @@ function bindCustomerId(parseData){
         enableClickableOptGroups: true,     
         includeSelectAllOption: true,  
         onChange: function (option, checked) {
+            getServices();
             $('#selCustomerIdError').text('');
         }
     });
@@ -216,7 +266,6 @@ function bindmap(mapData){
             var zoomLat = 0;
             var zoomLong = 0;
         }
-
 
         myCenter = new google.maps.LatLng(avgLat, avgLong);
         var mapOptions = {
