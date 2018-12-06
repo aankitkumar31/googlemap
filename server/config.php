@@ -3,7 +3,7 @@
 	
 	$mysql_server = "139.59.86.83"; 
 	$mysql_user = "root"; 
-	$mysql_pass = "Purplemist";
+	$mysql_pass = "tinsink";
 
 	// $mysql_server = "localhost"; 
 	// $mysql_user = "root"; 
