@@ -6,7 +6,8 @@ let endDate;
 $(document).ready(function(){
     var timeframe = $('#selTimeframe').val();
     //getData(timeframe);
-    getFilterData(timeframe)
+    getFilterData()
+    
     
     $('#btnSearch').on('click',function(){
         var customerArr = $('#selCustomerId').val();

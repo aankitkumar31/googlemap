@@ -47,13 +47,62 @@
             }
             $query .= ")";
         //echo $query;
-        //exit();
-        $rows = array();
+        //exit();        
         $sql = mysqli_query($conn, $query);
+        $rows = array();
         while($r = mysqli_fetch_assoc($sql)) {
             $rows[] = $r;
         }
         print json_encode($rows);
 	}
-	
+    
+    if($_POST['operation'] == "getKmlFile"){
+        $service_id = $_POST['service_id'];
+        $query = "select * from kml_data where service_id='".$service_id."'";
+        $sql = mysqli_query($conn, $query);
+        $rows = array();
+        while($r = mysqli_fetch_assoc($sql)) {
+            $rows[] = $r;
+        }
+        print json_encode($rows);
+    }
+
+    if($_POST['operation'] == "saveKmlData"){
+        $file_name = $_POST['file_name'];
+        $service_id = $_POST['service_id'];
+
+        $delQuery = "DELETE FROM kml_data WHERE service_id = '".$service_id."'";
+        $delsql = mysqli_query($conn, $delQuery);
+
+        $query = "INSERT INTO kml_data(file_name,service_id) VALUES ('".$file_name."','".$service_id."')";
+        $sql = mysqli_query($conn, $query);
+        if($sql){
+            echo "saved";
+        }
+        else{
+            echo "error";
+        }
+    }
+
+    if($_POST['operation'] == "saveCoordinates"){
+        $name = $_POST['name'];
+        $breakpointArr = $_POST['breakpointArr'];
+        $query = "INSERT INTO breakpoints(name,breakpoint) VALUES ";
+        $count = 0;
+        foreach ($breakpointArr as $key => $value ) {
+            if($count != 0){
+                $query .= ",";
+            }                
+            $query .= "('".$name."', '".$value."')";
+            $count++;
+        }
+        $sql = mysqli_query($conn, $query);
+        if($sql){
+            echo "saved";
+        }
+        else{
+            
+        }
+    }
+
 ?>
