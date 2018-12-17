@@ -2,7 +2,7 @@
 	// Mysql connection
 	
 	$mysql_server = "139.59.86.83"; 
-	$mysql_user = "root"; 
+	$mysql_user = "grafana123"; 
 	$mysql_pass = "tinsink";
 
 	// $mysql_server = "localhost"; 
